@@ -1,0 +1,47 @@
+import tkinter as tk
+
+def login():
+    username = entry_username.get()
+    password = entry_password.get()
+    if username == "admin" and password == "password":
+        root.withdraw()
+        new_window = tk.Toplevel()
+        new_window.title("Welcome")
+        label = tk.Label(new_window, text=f"Welcome, {username}!", font=("Helvetica", 20))
+        label.pack(padx=50, pady=50)
+    else:
+        label_message.config(text="Incorrect username or password", fg="red")
+        
+root = tk.Tk()
+root.title("Login")
+
+# Criando o frame para o login
+frame_login = tk.Frame(root, bg="#E8F0FE", padx=20, pady=20)
+frame_login.pack(expand=True)
+
+# Criando o título da aplicação
+label_title = tk.Label(frame_login, text="Login", font=("Helvetica", 20), fg="#023E8A", bg="#E8F0FE")
+label_title.pack(pady=10)
+
+# Criando os campos de entrada
+label_username = tk.Label(frame_login, text="Username:", font=("Helvetica", 12), fg="#023E8A", bg="#E8F0FE")
+label_username.pack()
+
+entry_username = tk.Entry(frame_login, font=("Helvetica", 12), bg="#F5F5F5", highlightthickness=0, bd=0)
+entry_username.pack(pady=5)
+
+label_password = tk.Label(frame_login, text="Password:", font=("Helvetica", 12), fg="#023E8A", bg="#E8F0FE")
+label_password.pack()
+
+entry_password = tk.Entry(frame_login, show="*", font=("Helvetica", 12), bg="#F5F5F5", highlightthickness=0, bd=0)
+entry_password.pack(pady=5)
+
+# Criando o botão de login
+button_login = tk.Button(frame_login, text="Login", font=("Helvetica", 12), bg="#023E8A", fg="white", command=login)
+button_login.pack(pady=10, ipadx=10, ipady=5)
+
+# Criando o rótulo de mensagem
+label_message = tk.Label(frame_login, text="", font=("Helvetica", 12), bg="#E8F0FE")
+label_message.pack(pady=5)
+
+root.mainloop()
